@@ -1,12 +1,24 @@
 ﻿namespace EmployeeManagement
 {
-    using System;
-
-    class Program
+    namespace Collection
     {
-        static void Main(string[] args)
+        public class Company : ICompany
         {
-            Console.WriteLine("Hello World!");
+            public string Employee_Adress { get; set; }
+            public int Employee_Id { get; set; }
+            public string Employee_Name { get; set; }
+            public string Employee_Position { get; set; }
+        }
+    }
+
+    namespace Collection
+    {
+        internal static class Program
+        {
+            private static void Main()
+            {
+                Backend.LogIn();
+            }
         }
     }
 }
