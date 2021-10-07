@@ -10,4 +10,9 @@
     <PackageReference Include="SQLitePCLRaw.core" Version="2.0.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="View\" />
+    <Folder Include="Controller\" />
+  </ItemGroup>
+
 </Project>
