@@ -6,10 +6,10 @@ namespace EmployeeManagement.Models
 {
     public class Account
     {
-        string Employee_Adress { get; set; }
-        int Employee_Id { get; set; }
-        string Employee_Name { get; set; }
-        string Employee_Position { get; set; }
-        
+        public string Employee_Adress { get; set; }
+        public int Employee_Id { get; set; }
+        public string Employee_Name { get; set; }
+        public string Employee_Position { get; set; }
+        public string Employee_Salary { get; set; }
     }
 }

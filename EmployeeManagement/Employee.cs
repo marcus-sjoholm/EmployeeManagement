@@ -1,10 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EmployeeManagement.Collection
+﻿namespace EmployeeManagement.Collection
 {
+    using System;
+    using System.Collections.Generic;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Sqlite;
+    using System.Linq;
+
     internal class Employee
     {
+        //public string Employee_Adress { get; set; }
+        //public int Employee_Id { get; set; }
+        //public string Employee_Name { get; set; }
+        //public string Employee_Position { get; set; }
+        //public string Employee_Salary { get; set; }
+        public static bool AddNewEmployeeToDb()
+        {
+            try
+            {
+                using var db = new Database.DatabaseFilePath();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: ", ex);
+            }
+        }
+
         public static void AdminAccess()
         {
             var employeeList = new List<Company>();
@@ -19,6 +39,7 @@ namespace EmployeeManagement.Collection
                 Console.WriteLine("5. Remove employee details");
                 Console.WriteLine("6. Set employee salary");
                 Console.WriteLine("7. Display salary");
+                Console.WriteLine("10. Log out");
                 Console.WriteLine("11. Exit");
                 Console.Write("\nEnter Your Choise Here: ");
 
@@ -96,6 +117,10 @@ namespace EmployeeManagement.Collection
                         DisplaySalary();
                         break;
 
+                    case 10:
+                        Backend.LogIn();
+                        break;
+
                     case 11:
                         Environment.Exit(0);
                         break;
@@ -130,6 +155,7 @@ namespace EmployeeManagement.Collection
                 Console.WriteLine("2. Display your position in company");
                 Console.WriteLine("3. Request change of position");
                 Console.WriteLine("4. Request change of salary");
+                Console.WriteLine("10. Log out");
                 Console.WriteLine("11. Exit");
                 Console.Write("\nEnter Your Choise Here: ");
 
@@ -149,6 +175,10 @@ namespace EmployeeManagement.Collection
 
                     case 4:
                         RequestNewSalary();
+                        break;
+
+                    case 10:
+                        Backend.LogIn();
                         break;
 
                     case 11:
