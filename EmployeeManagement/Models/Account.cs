@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EmployeeManagement.Models
 {
-    class Account
+    public class Account
     {
         string Employee_Adress { get; set; }
         int Employee_Id { get; set; }
