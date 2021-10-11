@@ -8,7 +8,7 @@
     {
         public static void AdminMenuOptions()
         {
-            Console.Clear();
+            Console.WriteLine();
             Console.WriteLine("ADMIN MENU:");
             Console.WriteLine("1. Add department");
             Console.WriteLine("2. Add employee");
@@ -17,12 +17,16 @@
             Console.WriteLine("5. Remove employee");
             Console.WriteLine("6. Search statistics from one department");
             Console.WriteLine("7. List all departments");
+            Console.WriteLine("8. List all employees");
             Console.WriteLine("10. Log out");
             Console.WriteLine("11. Exit program");
         }
 
-        public static void AdminView()
+        public static void AdminView(Company company, IEmployee employee)
         {
+            company = new Company();
+            employee = new Employee();
+
             AdminMenuOptions();
 
             while (true)
@@ -32,35 +36,41 @@
                     case 1:
                         Console.Clear();
                         Console.WriteLine("Add Department, enter name of new department:");
-                        new Company().AddDepartment(Console.ReadLine());
+                        var DepartmentName = Console.ReadLine();
+                        company.AddDepartment(DepartmentName);
+
+                        AdminMenuOptions();
                         break;
 
                     case 2:
                         Console.Clear();
                         Console.WriteLine("Add employee, list of avaialable departments:");
-                        new Company().ViewDepartment();
+                        company.ViewDepartment();
                         Console.WriteLine("Enter which department to assign new employee to");
-                        ((IEmployee)new Employee()).EmployeeDepartmentID = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine($"New employee will be assigned to {((IEmployee)new Employee()).EmployeeDepartmentID}, enter employee details:");
+                        employee.EmployeeDepartmentID = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"New employee will be assigned to {employee.EmployeeDepartmentID}, enter employee details:");
                         Console.WriteLine("Enter employees full name:");
-                        ((IEmployee)new Employee()).Name = Console.ReadLine();
+                        employee.Name = Console.ReadLine();
                         Console.WriteLine("Enter employees years of experience:");
-                        ((IEmployee)new Employee()).Experience = Convert.ToInt32(Console.ReadLine());
-                        while (((IEmployee)new Employee()).Role != "Manager" && ((IEmployee)new Employee()).Role != "Employee" && ((IEmployee)new Employee()).Role != "Consultant")
+                        employee.Experience = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter role:");
+                        employee.Role = Console.ReadLine();
+                        while (employee.Role != "Manager" && employee.Role != "Employee" && employee.Role != "Consultant")
                         {
                             Console.WriteLine("Enter employee role: (Manager, Employee or Consultant)");
-                            ((IEmployee)new Employee()).Role = Console.ReadLine();
+                            employee.Role = Console.ReadLine();
                         }
                         Console.WriteLine("Enter employees salary: ");
-                        ((IEmployee)new Employee()).Salary = Convert.ToInt32(Console.ReadLine());
-                        new Company().AddEmployee(new Employee(), out _);
+                        employee.Salary = Convert.ToInt32(Console.ReadLine());
+                        company.AddEmployee(employee, out _);
+                        AdminMenuOptions();
                         break;
 
                     case 3:
                         Console.Clear();
                         Console.WriteLine("Move employee to another department:");
-                        new Company().EditEmployeeRole(Convert.ToInt32(Console.ReadLine()));
-
+                        company.EditEmployeeRole(Convert.ToInt32(Console.ReadLine()));
+                        AdminMenuOptions();
                         break;
 
                     case 4:
@@ -70,48 +80,55 @@
                         if (searchParameter == "ID" || searchParameter == "id" || searchParameter == "Id")
                         {
                             Console.Write("\nEnter the employee ID to search for: ");
-                            new Company().ViewEmployee(Convert.ToInt32(Console.ReadLine()));
+                            company.ViewEmployee(Convert.ToInt32(Console.ReadLine()));
+                            AdminMenuOptions();
                         }
                         else
                         {
                             Console.Write("\nEnter the employee full name to search for: ");
-                            new Company().ViewEmployee(Console.ReadLine());
+                            company.ViewEmployee(Console.ReadLine());
+                            AdminMenuOptions();
                         }
                         break;
 
                     case 5:
                         Console.Clear();
                         Console.WriteLine("Remove employee from system. Enter employee ID:");
-                        new Company().DeleteEmployee(Convert.ToInt32(Console.ReadLine()));
-
+                        company.DeleteEmployee(Convert.ToInt32(Console.ReadLine()));
+                        AdminMenuOptions();
                         break;
 
                     case 6:
                         Console.Clear();
                         Console.WriteLine("List of companys departments:");
-                        new Company().ViewDepartment();
+                        company.ViewDepartment();
                         Console.WriteLine("Enter ID of the company you want to display statistics from:");
-                        new Company().ViewStatistics(Convert.ToInt32(Console.ReadLine()));
+                        company.ViewStatistics(Convert.ToInt32(Console.ReadLine()));
+                        AdminMenuOptions();
                         break;
 
                     case 7:
                         Console.Clear();
                         Console.WriteLine("Display all departments:");
-                        new Company().ViewDepartment();
+                        company.ViewDepartment();
+                        AdminMenuOptions();
+                        break;
+
+                    case 8:
+                        Console.Clear();
+                        company.DisplayEmployees();
+                        AdminMenuOptions();
                         break;
 
                     case 10:
                         Console.Clear();
-                        LogIn();
+                        LogIn(company, employee);
                         break;
 
                     case 11:
                         Console.Clear();
                         Console.WriteLine("Exiting program");
                         Environment.Exit(0);
-                        break;
-
-                    default:
                         break;
                 }
             }
@@ -128,11 +145,9 @@
             Console.WriteLine("11. Exit program");
         }
 
-        public static void EmployeeView()
+        public static void EmployeeView(Company company, IEmployee employee)
         {
             EmployeeMenuOptions();
-
-            _ = new Employee();
 
             while (true)
             {
@@ -144,43 +159,44 @@
                         if (searchParameter == "ID" || searchParameter == "id" || searchParameter == "Id")
                         {
                             Console.Write("\nEnter the employee ID to search for: ");
-                            new Company().ViewEmployee(Convert.ToInt32(Console.ReadLine()));
+                            company.ViewEmployee(Convert.ToInt32(Console.ReadLine()));
+                            EmployeeMenuOptions();
                         }
                         else
                         {
                             Console.Write("\nEnter the employee full name to search for: ");
-                            new Company().ViewEmployee(Console.ReadLine());
+                            company.ViewEmployee(Console.ReadLine());
+                            EmployeeMenuOptions();
                         }
                         break;
 
                     case 2:
                         Console.WriteLine("List of companys departments:");
-                        new Company().ViewDepartment();
+                        company.ViewDepartment();
                         Console.WriteLine("Enter ID of the company you want to display statistics from:");
-                        new Company().ViewStatistics(Convert.ToInt32(Console.ReadLine()));
+                        company.ViewStatistics(Convert.ToInt32(Console.ReadLine()));
+                        EmployeeMenuOptions();
                         break;
 
                     case 3:
                         Console.WriteLine("Display all departments:");
-                        new Company().ViewDepartment();
+                        company.ViewDepartment();
+                        EmployeeMenuOptions();
                         break;
 
                     case 10:
-                        LogIn();
+                        LogIn(company, employee);
                         break;
 
                     case 11:
                         Console.WriteLine("Exiting program");
                         Environment.Exit(0);
                         break;
-
-                    default:
-                        break;
                 }
             }
         }
 
-        public static void LogIn()
+        public static void LogIn(Company company, IEmployee employee)
         {
             Console.WriteLine("Welcome to login page!");
             Console.WriteLine("Enter user name:");
@@ -190,11 +206,11 @@
 
             if (name == "admin1" && password == "admin1234")
             {
-                AdminView();
+                AdminView(company, employee);
             }
             else
             {
-                EmployeeView();
+                EmployeeView(company, employee);
             }
         }
     }

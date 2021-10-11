@@ -6,7 +6,7 @@
     {
         public Employee()
         {
-            EmployeeDepartmentID = 0;
+            EmployeeDepartmentID = EmployeeDepartmentID;
             EmployeeID = 0;
             Name = null;
             Experience = 0;
@@ -14,9 +14,9 @@
             Salary = 0;
         }
 
-        public Employee(int employeeDepID, int employeeID, string fullName, int experience, string role, int salary)
+        public Employee(int employeeDepartmentID, int employeeID, string fullName, int experience, string role, int salary)
         {
-            EmployeeDepartmentID = employeeDepID;
+            EmployeeDepartmentID = employeeDepartmentID;
             EmployeeID = employeeID;
             Name = fullName;
             Experience = experience;

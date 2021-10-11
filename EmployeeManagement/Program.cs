@@ -6,7 +6,7 @@
     {
         public static void Main()
         {
-            Backend.LogIn();
+            Backend.LogIn(null, null);
         }
     }
 }

@@ -12,7 +12,7 @@
 
         public int AddDepartment(string departmentName)
         {
-            int i = 1;
+            var i = 1;
 
             departments.Add(new Department(new Random().Next(1, 100), departmentName));
 
@@ -29,16 +29,19 @@
 
         public int AddEmployee(IEmployee e, out int id)
         {
-            int i = 1;
+            var i = 1;
 
-            employees.Add(new Employee(e.EmployeeDepartmentID, new Random().Next(1, 1000), e.Name, e.Experience, e.Role, e.Salary));
+            Random random = new Random();
+            var rnd = random.Next(1, 1000);
+
+            employees.Add(new Employee(e.EmployeeDepartmentID, rnd, e.Name, e.Experience, e.Role, e.Salary));
             Console.WriteLine();
 
             foreach (var employee in employees)
             {
                 Console.WriteLine($"Employee ID: {i}");
+                Console.WriteLine($"Department: {employee.EmployeeDepartmentID}");
                 Console.WriteLine($"Employee Name: {employee.Name}");
-                Console.WriteLine($"Department: {employee.DepartmentID}");
                 Console.WriteLine($"Role: {employee.Role}");
                 Console.WriteLine($"Experience: {employee.Experience}");
                 Console.WriteLine($"Salary: {employee.Salary}");
@@ -46,8 +49,8 @@
                 i++;
             }
 
-            id = new Random().Next(1, 1000);
-            return new Random().Next(1, 1000);
+            id = rnd;
+            return rnd;
         }
 
         public int DeleteEmployee(int id)
@@ -64,6 +67,16 @@
             }
         }
 
+        public IEmployee DisplayEmployees()
+        {
+            Console.WriteLine();
+            foreach (var employee in employees)
+            {
+                Console.WriteLine($"{employee.Role} => ID: {employee.EmployeeID} => Name: {employee.Name}");
+            }
+            return null;
+        }
+
         public int EditEmployeeRole(int employee)
         {
             Console.WriteLine("Enter the new role of employee:");
@@ -78,7 +91,7 @@
 
         public int ViewDepartment()
         {
-            int i = 1;
+            var i = 1;
             Console.WriteLine();
             foreach (var department in departments)
             {
@@ -90,7 +103,7 @@
 
         public IEmployee ViewEmployee(int id)
         {
-            int i = 1;
+            var i = 1;
             Console.WriteLine();
             employees.Sort();
 
@@ -110,7 +123,7 @@
 
         public IEmployee ViewEmployee(string name)
         {
-            int i = 1;
+            var i = 1;
             Console.WriteLine();
             employees.Sort();
             foreach (var employee in employees.FindAll(x => x.Name == name))
@@ -129,7 +142,7 @@
 
         public int ViewStatistics(int id)
         {
-            int i = 1;
+            var i = 1;
             employees.Sort();
             List<Employee> query = employees.FindAll(x => x.DepartmentID == id);
 
