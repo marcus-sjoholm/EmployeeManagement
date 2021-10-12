@@ -1,6 +1,7 @@
 ﻿namespace EmployeeManagement.Models
 {
     using Interfaces;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     internal class Department : IDepartment
     {
@@ -16,7 +17,9 @@
             DepartmentName = departmentName;
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DepartmentID { get; set; }
+
         public string DepartmentName { get; set; }
     }
 }

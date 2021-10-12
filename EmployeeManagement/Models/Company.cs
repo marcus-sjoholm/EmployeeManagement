@@ -3,6 +3,7 @@
     using EmployeeManagement.Interfaces;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
     internal class Company : Employee, ICompany
@@ -34,7 +35,7 @@
             Random random = new Random();
             var rnd = random.Next(1, 1000);
 
-            employees.Add(new Employee(e.EmployeeDepartmentID, rnd, e.Name, e.Experience, e.Role, e.Salary));
+            employees.Add(new Employee(e.EmployeeDepartmentID, rnd, e.Name, e.Experience, e.Role, e.Salary, e.Password));
             Console.WriteLine();
 
             foreach (var employee in employees)
@@ -45,6 +46,7 @@
                 Console.WriteLine($"Role: {employee.Role}");
                 Console.WriteLine($"Experience: {employee.Experience}");
                 Console.WriteLine($"Salary: {employee.Salary}");
+                Console.WriteLine($"Password: { employee.Password}");
                 Console.WriteLine();
                 i++;
             }

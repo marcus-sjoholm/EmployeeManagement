@@ -6,6 +6,7 @@
         int EmployeeID { get; set; }
         int Experience { get; set; }
         string Name { get; set; }
+        string Password { get; set; }
         string Role { get; set; }
         int Salary { get; set; }
     }

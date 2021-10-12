@@ -62,6 +62,8 @@
                         }
                         Console.WriteLine("Enter employees salary: ");
                         employee.Salary = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter employee password: ");
+                        employee.Password = Console.ReadLine();
                         company.AddEmployee(employee, out _);
                         AdminMenuOptions();
                         break;
