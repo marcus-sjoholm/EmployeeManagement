@@ -1,24 +1,12 @@
 ﻿namespace EmployeeManagement
 {
-    namespace Collection
-    {
-        public class Company : ICompany
-        {
-            public string Employee_Adress { get; set; }
-            public int Employee_Id { get; set; }
-            public string Employee_Name { get; set; }
-            public string Employee_Position { get; set; }
-        }
-    }
+    using EmployeeManagement.Collection;
 
-    namespace Collection
+    public static class Program
     {
-        internal static class Program
+        public static void Main()
         {
-            private static void Main()
-            {
-                Backend.LogIn();
-            }
+            Backend.LogIn(null, null);
         }
     }
 }
