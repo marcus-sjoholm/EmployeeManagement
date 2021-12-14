@@ -132,7 +132,10 @@
                         Console.WriteLine("Exiting program");
                         Environment.Exit(0);
                         break;
-                }
+
+                    default: 
+                        throw new ArgumentOutOfRangeException("Invalid input");
+                    }
             }
         }
 
@@ -156,7 +159,7 @@
                 switch (Convert.ToInt32(Console.ReadLine()))
                 {
                     case 1:
-                        Console.Write("Do you want to search usign (ID) or (Name)? ");
+                        Console.Write("Do you want to search using (ID) or (Name)? ");
                         string searchParameter = Console.ReadLine();
                         if (searchParameter == "ID" || searchParameter == "id" || searchParameter == "Id")
                         {
@@ -194,6 +197,9 @@
                         Console.WriteLine("Exiting program");
                         Environment.Exit(0);
                         break;
+
+                    default: 
+                        throw new ArgumentOutOfRangeException("Invalid input");
                 }
             }
         }
@@ -201,7 +207,7 @@
         public static void LogIn(Company company, IEmployee employee)
         {
             Console.WriteLine("Welcome to login page!");
-            Console.WriteLine("Enter user name:");
+            Console.WriteLine("Enter user name: ");
             var name = Console.ReadLine();
             Console.WriteLine("Enter password: ");
             var password = Console.ReadLine();
