@@ -29,11 +29,11 @@
 
             AdminMenuOptions();
 
-            while (true)
+            do
             {
-                switch (Convert.ToInt32(Console.ReadLine()))
+                switch (Console.ReadLine())
                 {
-                    case 1:
+                    case "1":
                         Console.Clear();
                         Console.WriteLine("Add Department, enter name of new department:");
                         var DepartmentName = Console.ReadLine();
@@ -42,7 +42,7 @@
                         AdminMenuOptions();
                         break;
 
-                    case 2:
+                    case "2":
                         Console.Clear();
                         Console.WriteLine("Add employee, list of avaialable departments:");
                         company.ViewDepartment();
@@ -68,14 +68,14 @@
                         AdminMenuOptions();
                         break;
 
-                    case 3:
+                    case "3":
                         Console.Clear();
                         Console.WriteLine("Move employee to another department:");
                         company.EditEmployeeRole(Convert.ToInt32(Console.ReadLine()));
                         AdminMenuOptions();
                         break;
 
-                    case 4:
+                    case "4":
                         Console.Clear();
                         Console.Write("Do you want to search usign (ID) or (Name)? ");
                         string searchParameter = Console.ReadLine();
@@ -93,14 +93,14 @@
                         }
                         break;
 
-                    case 5:
+                    case "5":
                         Console.Clear();
                         Console.WriteLine("Remove employee from system. Enter employee ID:");
                         company.DeleteEmployee(Convert.ToInt32(Console.ReadLine()));
                         AdminMenuOptions();
                         break;
 
-                    case 6:
+                    case "6":
                         Console.Clear();
                         Console.WriteLine("List of companys departments:");
                         company.ViewDepartment();
@@ -109,31 +109,35 @@
                         AdminMenuOptions();
                         break;
 
-                    case 7:
+                    case "7":
                         Console.Clear();
                         Console.WriteLine("Display all departments:");
                         company.ViewDepartment();
                         AdminMenuOptions();
                         break;
 
-                    case 8:
+                    case "8":
                         Console.Clear();
                         company.DisplayEmployees();
                         AdminMenuOptions();
                         break;
 
-                    case 10:
+                    case "10":
                         Console.Clear();
                         LogIn(company, employee);
                         break;
 
-                    case 11:
+                    case "11":
                         Console.Clear();
                         Console.WriteLine("Exiting program");
                         Environment.Exit(0);
                         break;
+
+                    default:
+                        Console.WriteLine("Invalid input");
+                        break;
                 }
-            }
+            } while (true);
         }
 
         public static void EmployeeMenuOptions()
@@ -151,12 +155,12 @@
         {
             EmployeeMenuOptions();
 
-            while (true)
+            do
             {
-                switch (Convert.ToInt32(Console.ReadLine()))
+                switch (Console.ReadLine())
                 {
-                    case 1:
-                        Console.Write("Do you want to search usign (ID) or (Name)? ");
+                    case "1":
+                        Console.Write("Do you want to search using (ID) or (Name)? ");
                         string searchParameter = Console.ReadLine();
                         if (searchParameter == "ID" || searchParameter == "id" || searchParameter == "Id")
                         {
@@ -172,7 +176,7 @@
                         }
                         break;
 
-                    case 2:
+                    case "2":
                         Console.WriteLine("List of companys departments:");
                         company.ViewDepartment();
                         Console.WriteLine("Enter ID of the company you want to display statistics from:");
@@ -180,28 +184,32 @@
                         EmployeeMenuOptions();
                         break;
 
-                    case 3:
+                    case "3":
                         Console.WriteLine("Display all departments:");
                         company.ViewDepartment();
                         EmployeeMenuOptions();
                         break;
 
-                    case 10:
+                    case "10":
                         LogIn(company, employee);
                         break;
 
-                    case 11:
+                    case "11":
                         Console.WriteLine("Exiting program");
                         Environment.Exit(0);
                         break;
+
+                    default:
+                        Console.WriteLine("Invalid input");
+                        break;
                 }
-            }
+            } while (true);
         }
 
         public static void LogIn(Company company, IEmployee employee)
         {
             Console.WriteLine("Welcome to login page!");
-            Console.WriteLine("Enter user name:");
+            Console.WriteLine("Enter user name: ");
             var name = Console.ReadLine();
             Console.WriteLine("Enter password: ");
             var password = Console.ReadLine();
