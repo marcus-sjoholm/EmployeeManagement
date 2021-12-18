@@ -16,6 +16,17 @@ namespace EmployeeManagementUnitTests
             Assert.AreEqual(actual.name, name);
             Assert.AreEqual(actual.password, password);
         }
+        [TestMethod]
+        public void LoginUser_Test()
+        {
+            var name = "Nils";
+            var password = "Nils123";
+
+            var actual = (name, password);
+
+            Assert.AreEqual(actual.name, name);
+            Assert.AreEqual(actual.password, password);
+        }
     }
 }
 
