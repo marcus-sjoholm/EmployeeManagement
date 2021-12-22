@@ -208,7 +208,11 @@
 
         public static void LogIn(Company company, IEmployee employee)
         {
+<<<<<<< HEAD
             Console.WriteLine("Welcome to login page!!");
+=======
+            Console.WriteLine("Welcome to login page!!!");
+>>>>>>> 7a0f02b835756cadf5538c0a2528f3a93c3d48ad
             Console.WriteLine("Enter user name: ");
             var name = Console.ReadLine();
             Console.WriteLine("Enter password: ");
