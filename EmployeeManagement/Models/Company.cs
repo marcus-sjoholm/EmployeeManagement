@@ -6,7 +6,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    internal class Company : Employee, ICompany
+    public class Company : Employee, ICompany
     {
         private readonly List<Department> departments = new List<Department>();
         private readonly List<Employee> employees = new List<Employee>();
