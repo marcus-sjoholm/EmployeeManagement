@@ -3,7 +3,7 @@
     using Interfaces;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    internal class Department : IDepartment
+    public class Department : IDepartment
     {
         public Department()
         {

@@ -3,7 +3,7 @@
     using Interfaces;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    internal class Employee : Department, IEmployee
+    public class Employee : Department, IEmployee
     {
         public Employee()
         {
