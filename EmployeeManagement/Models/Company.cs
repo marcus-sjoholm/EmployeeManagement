@@ -28,6 +28,19 @@
             return new Random().Next(1, 100);
         }
 
+        public string DeleteDepartment(string departmentName)
+        {
+            if (departments.SingleOrDefault(d => d.DepartmentName == departmentName) != null)
+            {
+                departments.Remove(departments.SingleOrDefault(d => d.DepartmentName == departmentName));
+                return DepartmentName = null;
+            }
+            else
+            {
+                return String.Empty;
+            }
+        }
+
         public int AddEmployee(IEmployee e, out int id)
         {
             var i = 1;
